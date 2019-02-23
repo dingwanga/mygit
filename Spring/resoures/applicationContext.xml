@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd ">
+	<!-- 定义userDaoImpl对象,并指定id为userDao -->
+	<bean id="usr" class="cn.bdqn.dao.impl.UserDaoImpl"></bean>
+	<!-- 定义UserServiceImpl对象,并指定id为userService -->
+	<bean id="userService" class="cn.bdqn.service.impl.UserServiceImpl">
+		 <constructor-arg>
+			<ref bean="usr"/>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="zhangGa" class="cn.bdqn.entity.Greeting">
+		<property name="person">
+			<value>张嘎</value>
+		</property>
+		<property name="words">
+			<value>三天不打小鬼子，手都痒痒</value>
+		</property>
+		<property name="book" ref="book1"></property>
+	</bean>
+	<bean id="book1" class="cn.bdqn.entity.Book">
+		<property name="name" value="Java"></property>
+	</bean>
+	<bean id="book2" class="cn.bdqn.entity.Book">
+		<property name="name" value="Mysql"></property>
+	</bean>
+</beans>
